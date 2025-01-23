@@ -1,0 +1,79 @@
+<!-- Inline Css, Internal Css, External Css @Media, @KeyFrames
+
+ Details:<Tag>, .Class, #Id Use Of Inline Css -->
+
+<!-- Priority in sheets
+  1st inline
+  2nd internal
+  3rd external -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- internal css -->
+    <style>
+      /* universal selector */
+      *{
+        background-color: red;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* tag id class priority
+      id
+      class
+      by tag name */
+    
+      p {
+        background-color: yellow;
+      }
+      /* #text{
+        background-color: green;
+      } */
+      /* class keyword catch with "." symbol */
+      .green {
+        color: green;
+      }
+      .size {
+        font-size: 45px;
+      }
+      .bg-color {
+        background-color: gray;
+      }
+      #main {
+        font-size: 45px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- inline style  -->
+    <h1 style="color: #189f4a">Main heading</h1>
+    <p id="text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem
+      mollitia, soluta illum dicta magnam laudantium facilis eos vero. Saepe
+      earum quas vel quidem laudantium aliquam harum voluptates ea repellat!
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. At culpa sed
+      doloribus sequi fugiat, cupiditate labore illo amet dignissimos quibusdam
+      facere similique quis. Quam quibusdam praesentium nisi dolores tempora
+      illo?
+    </p>
+    <h3>External CSS</h3>
+    <article class="green size bg-color">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium
+      quasi recusandae reiciendis quibusdam ducimus repellat dolorum, suscipit
+      officiis illo deserunt, quis expedita exercitationem asperiores cumque
+      saepe distinctio! Quia, praesentium cupiditate?
+    </article>
+
+    <span id="main"> Click me to change the color! </span>
+  </body>
+</html>
