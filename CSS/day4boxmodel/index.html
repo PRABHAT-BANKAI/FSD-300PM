@@ -1,0 +1,80 @@
+<!-- Box Modal
+Width, Height, Background-Color
+Content, Padding, Border, Margin
+Box-Sizing
+
+Border, Border-Radius
+Display Property
+Block, Inline, Inline-Block, None -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 400px;
+        width: 400px;
+        background-color: aqua;
+        /* padding-top:45px;
+        padding-bottom:75px;
+        padding-left:55px;
+        padding-right:25px; */
+
+        /* short hand for padding  left right  */
+        /* padding: 45px 95px; */
+        /* padding: 45px 95px 10px 5px; */
+        padding: 195px;
+        border-radius: 100% 0% 52% 48% / 46% 0% 100% 54%;
+
+        /* border-width: 5px;
+border-style: double;
+border-color: rgb(9, 5, 229); */
+
+        /* short hand for border */
+        /* border: 50px solid crimson; */
+
+        margin: 50px;
+
+        /* border-right: 2px solid black; */
+      }
+      #deepsink {
+        display: block;
+      }
+      #text {
+        display: inline;
+      }
+      #high {
+        background-color: green;
+        display: inline-block;
+      padding: 45px;
+      /* display: none; */
+      /* visibility: hidden; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">box</div>
+    <p id="text">paragraph tag</p>
+    <span>chat gpt</span>
+
+    <span id="deepsink">deepsink</span>
+
+    <p style="background-color: yellow">
+      Lorem ipsum sit amet consectetur, adipisicing elit. Tempora amet quidem
+      asperiores consectetur corporis eius consequuntur. Ea itaque sit id
+      eveniet, alias<span id="high">highlighter span </span > quisquam quo quas, tenetur excepturi iure sed veritatis.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum voluptas
+      reprehenderit maiores magnam dolores labore necessitatibus maxime amet
+      consectetur illo libero, delectus numquam nisi voluptate nostrum vero?
+      Recusandae, quam perferendis.
+    </p>
+  </body>
+</html>
