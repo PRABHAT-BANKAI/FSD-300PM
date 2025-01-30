@@ -1,0 +1,49 @@
+<!-- Float Property
+Float (Left,Right), Clear:Both, Calc()
+Image Attach In Html(Object-Fit, Object Position) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .box {
+        height: 150px;
+        width: 150px;
+        border: 1px solid black;
+      }
+      .b1 {
+        background-color: crimson;
+        float: left;
+      }
+      .b2 {
+        background-color: green;
+        float: left;
+      }
+      .clear {
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Float Property</h1>
+    <div class="box b1"></div>
+    <div style="font-size: 45px;padding: 45px;;" class="box b2">♕</div>
+    <div class="box b1"></div>
+    <div class="clear"></div>
+    <div class="box b2"></div>
+    <div class="box b1"></div>
+    <div class="box b2"></div>
+    <div class="clear"></div>
+    <div class="box b1"></div>
+    <div class="box b2"></div>
+    <div class="box b1"></div>
+  </body>
+</html>
