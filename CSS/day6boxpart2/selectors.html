@@ -1,0 +1,62 @@
+<!-- Selector div,P, Div P, Div > P:
+
+First Letter, :First Line, :First Child, :LastChild,
+ :Nth Child(), :Nth Last Child(), ::Selection -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Grouping Selectors */
+      div,
+      p,
+      span {
+        color: red;
+      }
+      /* Descendant Combinator Selector */
+      #card p {
+        color: green;
+      }
+/* attribute selectors */
+      /* Child Combinator (>) */
+      #card-2 > p {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+      iste, deleniti doloribus obcaecati modi similique harum ab laboriosam
+      neque, unde nobis eum esse distinctio nulla illum. Harum maxime minima
+      sunt?
+      <p>green</p>
+    </div>
+    <p>Batman</p>
+    <span>Superman</span>
+
+    <div  id="card">
+      <!-- <input type="text"> -->
+      <p>hello from inside div tag</p>
+      <div>
+        <p>nested div inside div tag</p>
+        <div>
+          <p>Krish</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="card-2">
+      <p>hello from inside div-2 tag</p>
+      <div>
+        <p>nested div inside div-2 tag</p>
+        <div>
+          <p>Batman</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

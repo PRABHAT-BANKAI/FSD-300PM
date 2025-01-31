@@ -1,0 +1,38 @@
+<!-- Calc()
+Image Attach In Html(Object-Fit, Object Position)  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main-container {
+        display: flex;
+      }
+      aside {
+        width: 250px;
+        height: 100vh;
+        background-color: green;
+      }
+      #card {
+        width: calc(100% - 250px);
+        background-color: aqua;
+        height: 100vh;
+      }
+      img{
+        /* object-fit: fill ; bydefault */
+        object-fit: cover; 
+        /* object-fit: contain; */
+        object-position: bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="main-container">
+      <aside></aside>
+      <div id="card"></div>
+    </div> -->
+    <img src="./Designer.png" height="100px" width="400px" alt="">
+  </body>
+</html>
