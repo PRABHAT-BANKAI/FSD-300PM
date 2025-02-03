@@ -11,19 +11,48 @@ First Letter, :First Line, :First Child, :LastChild,
     <title>Document</title>
     <style>
       /* Grouping Selectors */
-      div,
+      /* div,
       p,
       span {
         color: red;
-      }
+      } */
       /* Descendant Combinator Selector */
       #card p {
         color: green;
       }
-/* attribute selectors */
+      /* attribute selectors */
       /* Child Combinator (>) */
       #card-2 > p {
         color: blue;
+      }
+      #first-word::first-letter {
+        color: rgb(0, 128, 113);
+      }
+      #first-word::first-line {
+        color: black;
+      }
+      li:first-child {
+        color: rgb(134, 139, 0);
+      }
+      /* p:first-child{
+        border :1px solid green;
+      } */
+      /* p:nth-child(3){
+        border :1px solid green;
+      } */
+      p:nth-last-child(1) {
+        border: 1px solid green;
+      }
+      article::selection {
+        background-color: yellow;
+        color: red;
+      }
+      img[title] {
+        height: 200px;
+      }
+
+      #adj + div {
+        color: green;
       }
     </style>
   </head>
@@ -38,8 +67,10 @@ First Letter, :First Line, :First Child, :LastChild,
     <p>Batman</p>
     <span>Superman</span>
 
-    <div  id="card">
+    <div id="card">
       <!-- <input type="text"> -->
+      <li>item 0</li>
+      <li>item 1</li>
       <p>hello from inside div tag</p>
       <div>
         <p>nested div inside div tag</p>
@@ -58,5 +89,57 @@ First Letter, :First Line, :First Child, :LastChild,
         </div>
       </div>
     </div>
+
+    <p id="first-word">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione
+      similique ut itaque dolores repudiandae fuga sit officiis molestias animi
+      laborum, placeat delectus voluptate dolorem enim eius ipsa recusandae quo
+      hic?
+    </p>
+
+    <section class="main">
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+      <li>item 4</li>
+      <li>item 5</li>
+    </section>
+
+    <div>
+      <p>hello 1</p>
+      <p>hello 2</p>
+      <p>hello 3</p>
+      <p>hello 4</p>
+    </div>
+    <div>
+      <p>hello 1</p>
+      <p>hello 2</p>
+      <p>hello 3</p>
+      <p>hello 4</p>
+    </div>
+    <div>
+      <p>hello 1</p>
+      <p>hello 2</p>
+      <p>hello 3</p>
+      <p>hello 4</p>
+    </div>
+
+    <article>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora vel
+      earum, recusandae non labore quos ex minima similique rem numquam, fugit
+      sint fuga praesentium, libero cupiditate facilis sed repellendus eligendi?
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis
+      laboriosam in eum quae assumenda id at veritatis pariatur, veniam tempora
+      fuga suscipit nulla! Ipsum beatae veniam eveniet nisi vel architecto?
+    </article>
+    <img src="./Designer.png" title="fruits&vegetables" alt="" />
+
+    <div id="adj">
+      <div>lorem</div>
+      <div>lorem2</div>
+      <div>lorem3</div>
+    </div>
+    <div>lorem4</div>
+    <div>lorem5</div>
   </body>
 </html>
