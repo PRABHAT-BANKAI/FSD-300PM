@@ -33,27 +33,32 @@
 
       @keyframes magicbox {
         0% {
-          transform: scale(1) rotate(0deg) skew(0deg);
+
+      
           background-color: green;
         }
         20% {
-          transform: scale(1.1) rotate(180deg) skew(45deg);
+          transform: translate(100px);
           background-color: yellow;
         }
         40% {
-          transform: scale(1) rotate(0deg) skew(0deg);
+       
+          transform: rotate(180deg);
           background-color: blue;
         }
         60% {
-          transform: scale(1.1) rotate(180deg) skew(-45deg);
+    
+          transform: skew(180deg);
           background-color: pink;
         }
         80% {
-          transform: scale(1) rotate(0deg) skew(0deg);
+      
+          transform: scale(1.5);
           background-color: orange;
         }
         100% {
-          transform: scale(1) rotate(0deg) skew(0deg);
+    
+          transform: translate(-50%, -50%);
           background-color: green;
         }
       }
