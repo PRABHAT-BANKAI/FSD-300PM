@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        height: 800px;
+        width: 800px;
+        background-color: blue;
+        position: relative;
+        z-index: -6;
+      }
+      .box {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+      }
+      .sqr1 {
+        background-color: rgb(0, 204, 255);
+        top: 125px;
+        left: 125px;
+        z-index: 10;
+      }
+      .sqr2 {
+        background-color: rgb(0, 255, 115);
+        top: 105px;
+        left: 105px;
+        z-index: 5;
+      }
+      .sqr3 {
+        background-color: rgb(183, 255, 0);
+        top: 85px;
+        left: 85px;
+      }
+      .sqr4 {
+        background-color: rgb(255, 196, 0);
+        top: 55px;
+        left: 55px;
+        z-index: -5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box sqr1">box1</div>
+      <div class="box sqr2">box2</div>
+      <div class="box sqr3">box3</div>
+      <div class="box sqr4">box4</div>
+
+    </div>
+  </body>
+</html>

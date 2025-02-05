@@ -1,0 +1,78 @@
+<!-- Position
+static, Absolute, Relative, Fixed, Sticky,
+ Z Index, Overflow -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 1300px;
+        width: 600px;
+        background-color: yellow;
+        position: relative;
+      }
+      .box{
+        height: 200px;
+        width: 200px;
+        background-color: red;
+        position: absolute;
+        right: 0;
+        /* bottom: 0 !important; */
+        /* bottom: 25px; */
+        top: 50%;
+        left:50%;
+        translate: -50% -50%;
+    
+      }
+      .inner-container {
+        height: 420px;
+        width: 420px;
+        background-color: green;
+        position: relative;
+      }
+      .fixed{
+        height: 50px;
+        width: 350px;
+        background-color: blueviolet;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+      }
+      .container-2{
+        height: 1200px;
+        background-color: crimson;
+        width: 100%;
+      }
+      .sticky{
+        position: sticky;
+        height: 50px;
+        width: 100%;
+        background-color: aqua;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner-container">
+        <div class="box"></div>
+        <div class="fixed">fixed chat bot</div>
+      
+      </div>
+      <div class="sticky">Sticky</div>
+     
+    </div>
+    <div class="container-2">
+
+    </div>
+  </body>
+</html>
