@@ -1,0 +1,70 @@
+<!-- Before, After, Transition &
+  Hover:
+ ::Before, ::After
+transition
+ Duration, Timing Function, Delay, Property:Hover, :Focus -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1:hover::after {
+        content: "after";
+        color: green;
+        transition: color 2s ease-in-out;
+      }
+      h1:hover::before {
+        content: "before";
+        color: green;
+      }
+      /* p::after{
+      content: "🥪";
+      background-color: rgba(211, 23, 23, 0.5);
+      transition: color 1s ease-in-out;
+    }
+    p::before{
+      content:"😂";
+    } */
+      .box {
+        height: 300px;
+        width: 300px;
+        background-color: blueviolet;
+        transition-duration: 5s;
+        /* transition-delay: 3s; */
+
+        transition-property: width, border-radius, background-color;
+        transition-timing-function: ease-in-out;
+      }
+      .box:hover {
+        border-radius: 50%;
+        width: 500px;
+        background-color: green;
+      }
+      input:focus{
+        outline: none;
+        border: 2px solid red;
+        border-radius: 5px;
+        transition: border 2s ease-in-out;
+        background-color: yellow;
+        color: red;
+      }
+      p{
+        box-shadow: 24px 23px 62px 24px rgba(62,62,163,1);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+    
+    </style>
+  </head>
+  <body>
+    <h1>hello wolrd</h1>
+    <p>hi from paragraph tag</p>
+
+    <div class="box"></div>
+    <br>
+<input type="text">
+
+  </body>
+</html>
