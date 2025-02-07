@@ -1,0 +1,91 @@
+<!-- Display Flex (Parent Property)Display: Flex
+
+FlexDirection (Row, Row Reverse, Column, Column Reverse)
+
+Flex Wrap (Nowrap, Wrap, Wrap Reverse)
+
+Flex Flow (Flex Direction Flex Wrap) -->
+
+<!-- Display Flex (Parent Property)
+Justify-Content (Flex-Start, Flex-End, Center, Space-Between, Space-Around, Space-Evenly)
+Align-Items (Stretch, Center, Flex-Start, Flex-End, Baseline)
+Align-Content (Stretch, Center, Flex-Start, Flex-End, Space-Between, Space-Around, Space-Evenly) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+   
+        width: 150px;
+      }
+      .a1 {
+        background-color: red;
+      }
+      .a2 {
+        background-color: blue;
+      }
+      .a3 {
+        background-color: green;
+      }
+      .a4 {
+        background-color: yellow;
+      }
+
+      #container{
+        border: 1px solid black;
+        display: flex;
+        height: 500px;
+        /* flex-direction: column; */
+        /* flex-direction:row ; */
+        /* flex-direction:column ; */
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column-reverse; */
+        /* flex-wrap: wrap; */
+        /* flex-wrap: nowrap; bydefault */
+        /* flex-wrap: wrap-reverse; */
+        /* flex-flow: row-reverse  wrap; */
+        /* justify-content: flex-start; */
+        /* justify-content: flex-end; */
+        justify-content: center;
+        /* justify-content: space-between; */
+        /* justify-content: space-around; */
+        /* justify-content: space-evenly; */
+        align-items: center;
+        align-items: stretch;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Display flex</h1>
+    <p>
+      Flexbox is a one-dimensional layout method for arranging items in rows or
+      columns. Items flex (expand) to fill additional space or shrink to fit
+      into smaller spaces.
+    </p>
+    <img
+      src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox/flex_terms.png"
+      alt=""
+    />
+    <div id="container">
+      <div class="box a1">box1</div>
+      <div class="box a2">box2</div>
+      <div class="box a3">box3</div>
+      <div class="box a4">box4</div>
+      <!-- <div class="box a1">box1</div>
+      <div class="box a2">box2</div>
+      <div class="box a3">box3</div>
+      <div class="box a4">box4</div>
+      <div class="box a1">box1</div>
+      <div class="box a2">box2</div>
+      <div class="box a3">box3</div>
+      <div class="box a4">box4</div>
+      <div class="box a1">box1</div>
+      <div class="box a2">box2</div>
+      <div class="box a3">box3</div>
+      <div class="box a4">box4</div> -->
+    </div>
+  </body>
+</html>
