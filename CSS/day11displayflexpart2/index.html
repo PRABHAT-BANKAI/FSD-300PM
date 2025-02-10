@@ -1,0 +1,66 @@
+<!-- Align-Items (Stretch, Center, Flex-Start, Flex-End, Baseline)
+Align-Content (Stretch, Center, Flex-Start, Flex-End, Space-Between, Space-Around, Space-Evenly) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        height: 500px;
+        border: 1px solid black;
+        /* align-items: stretch; */
+        /* align-items: center;
+     align-items: flex-start; */
+        /* align-items: flex-end;  */
+        /* align-items: baseline; */
+        /* align-items: center; */
+        /* align-content: flex-start; */
+        /* align-content: center; */
+        /* align-content: flex-end; */
+        flex-wrap: wrap;
+        /* align-content: space-between; */
+        /* align-content: space-around; */
+        /* align-content: stretch; */
+        /* align-items: stretch; */
+        /* align-items: center; */
+        /* align-content:center; */
+
+        /* align-content: start; */
+        /* align-items: end; */
+      }
+      .box {
+        height: 100px;
+        width: 100px;
+      }
+      .box1 {
+        background-color: red;
+      }
+      .box2 {
+        background-color: blue;
+      }
+      .box3 {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box1">Box 1</div>
+      <div class="box box2">Box 2</div>
+      <div class="box box3">Box 3</div>
+      <div class="box box1">Box 1</div>
+      <div class="box box2">Box 2</div>
+      <div class="box box3">Box 3</div>
+      <div class="box box1">Box 1</div>
+      <div class="box box2">Box 2</div>
+      <div class="box box3">Box 3</div>
+      <div class="box box1">Box 1</div>
+      <div class="box box2">Box 2</div>
+      <div class="box box3">Box 3</div>
+    </div>
+  </body>
+</html>
