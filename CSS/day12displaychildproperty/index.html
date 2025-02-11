@@ -1,0 +1,67 @@
+<!-- Display Flex (Child Property)
+Flex-Basis, Flex-Grow, Flex-Shrink, Order
+Align-Self (Stretch, Center, Flex-Start, Flex-End, Baseline) -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        height: 700px;
+        background-color: grey;
+     
+      }
+      .box {
+        /* height: 150px; */
+      
+        width: 150px;
+      }
+      .box1 {
+        background-color: red;
+        /* flex-grow: 5; */
+        /* flex-shrink: 1; */
+        /* order: 3; */
+      }
+      .box2 {
+        background-color: blue;
+        /* flex-grow: 1; */
+        /* flex-shrink: 3; */
+        /* order: 1; */
+      }
+      .box3 {
+        background-color: green;
+        /* height: 200px; */
+        /* flex-grow: 3; */
+        /* flex-shrink: 8; */
+        /* order: -1; */
+      }
+      .box4 {
+        background-color: yellow;
+        /* flex-basis: 400px; */
+        /* flex-grow: 2; */
+        /* flex-shrink: 3; */
+        /* align-self: center; */
+        /* align-self: flex-end; */
+      }
+      .box5 {
+        background-color: orange;
+        /* flex-grow: 2; */
+        /* flex-shrink: 2; */
+        /* order: -2; */
+        align-self: baseline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box1">Box 1</div>
+      <div class="box box2">Box 2</div>
+      <div class="box box3">Box 3</div>
+      <div class="box box4">Box 4</div>
+      <div class="box box5">Box 5 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam suscipit magni ex provident, ipsam nemo dolorum exercitationem praesentium quisquam. Reprehenderit impedit vel cumque provident eveniet possimus doloremque totam temporibus voluptatum?</div>
+    </div>
+  </body>
+</html>
