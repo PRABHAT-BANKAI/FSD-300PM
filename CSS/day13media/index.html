@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .navbar {
+        display: flex;
+        height: 72px;
+        background-color: grey;
+      }
+      .inner-navbar {
+        margin: 0 10%;
+        display: flex;
+        justify-content: space-between;
+        width: 80vw;
+        /* min-width: 800px; */
+        align-items: center;
+      }
+      .nav-link {
+        list-style: none;
+        display: flex;
+        width: 300px;
+        justify-content: space-between;
+      }
+      .menu {
+        display: none;
+      }
+      .section-a {
+        display: flex;
+      }
+      .box {
+        width: 50%;
+        border: 1px solid black;
+        height: 400px;
+        background-color: aqua;
+      }
+
+      @media (max-width: 768px) {
+        /* … */
+        nav {
+          display: none;
+        }
+        .menu {
+          display: block;
+        }
+        .section-a {
+          flex-direction: column;
+        }
+        .box {
+          width: 100%;
+          background-color: crimson;
+        }
+      }
+      @media (max-width: 586px) {
+        .box {
+          height: 200px;
+          background-color: green;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="inner-navbar">
+        <h1 class="logo">My Website</h1>
+
+        <div class="menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <nav>
+          <ul class="nav-link">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="section-a">
+      <div class="box"></div>
+      <div class="box"></div>
+    </section>
+  </body>
+</html>
