@@ -115,16 +115,103 @@ let object = {
 // camelCase  addressOfCompany
 // snakeCase   address_of_company
 
+console.log(2);
+console.log(3);
+console.log(4);
 
+// normal function
+function print() {
+  console.log(1);
+}
+function print1() {
+  console.log(4);
+}
 
+function print2() {
+  console.log(5);
+}
 
+print();
+print2();
+print1();
 
 // Comparison operators
 // ==  only value comparison
-// ===
-// >=
-// <=
-// >
-// <
-// !=
-// !==
+// === strickly comparison
+// >= greater than equalto
+// <= less than equalto
+// > greater than
+// <less than
+// != not equalto
+// !== not strickly equalto
+
+console.log("5" == 5);
+console.log("10" === 10);
+
+console.log(4 != 5);
+
+// Logical operators
+// && and return false value  and false comaparision
+// || and return true value and true comaparision
+
+console.log(0 == 0 && 5 > 2 && 12 > 3 && 12);
+console.log(0 || false || false || 0);
+
+console.log((12 > 3 && 34 == 55 && 34 - 34) || 0 || (true && 55 > 1 && 100));
+
+//false && 0  || 0 || true && 55>1 && 100
+//false && 0  || 0 || 100
+
+//false ||0||100
+
+// conversion with console.log and innerHTML
+
+let stringNum = "1234a5";
+
+console.log(typeof stringNum);
+let resultNum = Number(stringNum);
+console.log(typeof resultNum);
+
+console.log(typeof typeof resultNum);
+
+// explicit conversion
+let numberStr = 12345;
+console.log(numberStr);
+let resultStr = String(numberStr);
+
+console.log(resultStr);
+
+let boolTemp = true;
+let resultTemp = Number(boolTemp);
+
+console.log(resultTemp);
+
+let emptyString = "1";
+let convertBoolean = Boolean(emptyString);
+
+console.log(convertBoolean);
+
+console.log(null === undefined);
+
+console.log("5" - 2); // implicit conversion
+console.log(true - 9);
+console.log("false" + 1); // concatination
+console.log("abc" + 1 + 2 + 3);
+
+console.log("hello" + " world");
+
+console.log(1 + 2 + 3 + "abc");
+
+let object1 = { userName: "batman" };
+let object2 = { userName: "batman" };
+console.log(object1 == object2);
+console.log("12"-false)
+
+
+let aa = {valueOf:function (){
+  return 2;
+}}
+
+console.log(aa==2)
+console.log(aa+3)
+console.log(aa>1)
