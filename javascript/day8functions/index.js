@@ -1,5 +1,5 @@
 // function is non primitive types
-// function is alblock of code
+// function is a block of code
 // normal function
 
 function print2() {
@@ -17,10 +17,11 @@ function print() {
 print2();
 print();
 
-function sum(a, b) {
+function sum(num1, num2) {
   // parameters
-  console.log(a, b);
-  console.log(a + b);
+
+  console.log(num1, num2);
+  console.log(num1 + num2);
 }
 
 sum(1, 2); // arguments;
@@ -28,12 +29,12 @@ sum(1, 2); // arguments;
 let c = 12;
 let d = 3;
 
-function add(num1, num2) {
-  // parameters
-  console.log("c" + num1, "d" + num2);
-}
+// function add(d, c) {
+//   // parameters
+//   console.log("c" + num1, "d" + num2);
+// }
 
-add(c, d); // arguments;
+// add(c, d); // arguments;
 
 function subtract() {
   // console.log(5 - 2);
@@ -55,21 +56,36 @@ console.log(store);
 
 console.log(gameOfSum(15, 12));
 
-
 // find even numbers in 1 to 100
 
-for(let i=1;i<100;i++) {
-   console.log(findEven(i))
+for (let i = 1; i < 100; i++) {
+  console.log(findEven(i));
 }
 
-
-
-
-
-function findEven(num){
-  if(num%2==0){
-   return num
-  }else{
-    return `not even ${num}`
+function findEven(num) {
+  if (num % 2 == 0) {
+    return num;
+  } else {
+    return `not even ${num}`;
   }
+}
+
+let fruit = "grapes";
+
+switch (fruit) {
+  case "apple":
+    console.log("I love apples");
+    break;
+  case "banana":
+    console.log("I love bananas");
+    break;
+  case "orange":
+    console.log("I love oranges");
+    break;
+
+  case "mango":
+    console.log("I love mangoes");
+    break;
+  default:
+    console.log("I don't like this fruit");
 }
