@@ -92,50 +92,43 @@ if (budget >= 6000) {
   console.log("ghar betho");
 }
 
-
-console.log(1)
-console.log(2)
-console.log(3)
-console.log(4)
-console.log(5)
-
+console.log(1);
+console.log(2);
+console.log(3);
+console.log(4);
+console.log(5);
 
 // for(initization;condition;inc or dec){
 //   code execution
 // }
 
-
-for(let i=1;i<=100;i++){
+for (let i = 1; i <= 100; i++) {
   console.log(i);
 }
-
 
 // while loop
 //1step initialization
 
 // while(condition){
 //   code execution
-//   last step increment/decrement 
+//   last step increment/decrement
 // }
 
+let low = 0;
+let high = 15;
 
-let low = 0
-let high = 15
-
-
-while(low<=high){
-  console.log(low)
-  low++
-  high--
+while (low <= high) {
+  console.log(low);
+  low++;
+  high--;
 }
 
 // first initialization
 // do {
 //   second excute code of block
 // inc or dec
-  
-// } while (condition); third step check condition
 
+// } while (condition); third step check condition
 
 // let num1  = 1
 
@@ -144,3 +137,22 @@ while(low<=high){
 //   console.log(num1)
 
 // }while(num1 <=8)
+
+// normal function
+
+function sum(a, b) {
+  // parameters
+  return a + b;
+  // console.log("sum");
+}
+// arguments
+
+console.log(sum(14, 15));
+
+let result = sum(12, 2);
+console.log(result);
+
+// normal function
+// arrow function
+// variable function
+// anonymous function
