@@ -57,35 +57,3 @@ for (let i = 0; i < numbers.length; i++) {
 
 console.log(max);
 
-// Array With Functions
-// (map ,filter, foreach, indexof, findindex ,includes, every, some)
-
-
-//HOF (high order functions)
-// example (map , filter, foreach)
-
-
-
-let skillsCoding = ["html", "css", "javascript", "react", "node"];
-
-//map
-// map is array method
-// 1st it will create new array
-// 2nd it will updated array
-// 3rd will be returning a new array
-
-let store = skillsCoding.map((data)=>{
- return data+" language"
-})
-
-console.log(store)
-
-let  multi = [1,2,3,4,5]
-
-
-let storeData = multi.map((num)=>{
-  return num*5
-})
-
-console.log(storeData)
-console.log(storeData[3])
