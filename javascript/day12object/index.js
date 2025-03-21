@@ -109,6 +109,6 @@ let a = {
 };
 
 let c = a;
-c.a = 4;
+c.a = 4;      
 c.r = 7;
 console.log(a === c);
