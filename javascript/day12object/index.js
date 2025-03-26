@@ -76,7 +76,10 @@ let subArr = ["math", "science", "english", "history", "art", "music"];
 console.log(student.subjects[subArr[0]]);
 
 for (let i = 0; i < subArr.length; i++) {
-  console.log(`${subArr[i]} ==> ${student.subjects[subArr[i]]}`);
+  if(student.subjects[subArr[i]] > 65){
+    console.log(`${subArr[i]} ==> ${student.subjects[subArr[i]]}`);
+  }
+
 }
 
 ///   input ["apple","oppo","samsung","Mi", apple,google,google,android,mi]
