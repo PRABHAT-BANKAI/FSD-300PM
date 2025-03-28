@@ -1,0 +1,64 @@
+<!-- DOM HTML DOM Changed query Selector 
+and querySelectorsAll AddEventListner -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      DOM(document object model) The DOM represents a document with a logical
+      tree. Each branch of the tree ends in a node, and each node contains
+      objects. DOM methods allow programmatic access to the tree. With them, you
+      can change the document's structure, style, or content.
+    </h1>
+
+    <p class="text"></p>
+    <p class="text"></p>
+    <p class="text"></p>
+
+    <p id="head1"></p>
+    <p id="head2"></p>
+    <p id="head3"></p>
+
+    <button id="btn">Changed color</button>
+
+    <script>
+      // Selecting the paragraph element
+      const paragraph = document.getElementsByClassName("text");
+      for (let i = 0; i < paragraph.length; i++) {
+        paragraph[i].innerHTML = i + 1;
+      }
+      // Selecting the first heading element
+      let head1 = document.querySelector("#head1");
+      let head2 = document.querySelector("#head2");
+      let head3 = document.querySelector("#head3");
+
+      head1.innerText = "a";
+      head2.innerText = "b";
+      head3.innerText = "c";
+
+      let allPara = document.querySelectorAll("p");
+      console.log(allPara);
+
+      allPara.forEach((element) => {
+        setTimeout(function () {
+          element.innerText = "hacked";
+          element.style.color = "red";
+        }, 10000);
+      });
+
+      let btn = document.querySelector("#btn");
+
+      btn.addEventListener("click", () => {
+        for (let paragraph of allPara) {
+          // of keyword used for array
+          paragraph.style.color = "blue";
+        }
+      });
+    </script>
+  </body>
+</html>
