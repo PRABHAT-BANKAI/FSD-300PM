@@ -5,6 +5,7 @@ let percentage = 80;
 // syntax
 // if (condition) {// true //false
 //   //execute
+
 // }
 
 if (percentage > 90) {
