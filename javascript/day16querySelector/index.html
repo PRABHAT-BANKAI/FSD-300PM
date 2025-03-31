@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <button>add data</button>
+
+    <img id="image" src="" alt="" height="200px" />
+    <script>
+      let paragraphs = document.querySelectorAll("p");
+      let array = ["guliver travels", "invisible man", "harrypotter", "hobbit"];
+      let button = document.querySelector("button");
+      let image = document.querySelector("#image");
+
+      let arrayOfImages = [
+        "https://i.pinimg.com/564x/9b/a2/57/9ba25796112cad616be27e473ae1e149.jpg",
+        "https://images.othoba.com/images/thumbs/0655758_cartoon-penguin-doll-toy-creative-cute-soft-dolls-kids-birthday-gift.webp",
+        "https://as2.ftcdn.net/v2/jpg/01/25/43/33/1000_F_125433396_ZnswSQVv1wnPXuYBeWfBYhSXR19YXD1x.jpg",
+      ];
+
+      function showData() {
+        array.forEach((book, index) => {
+          paragraphs[index].innerText = book;
+        });
+      }
+
+      button.addEventListener("click", showData);
+
+      function showImage() {
+        let count = 0;
+        setInterval(() => {
+          if (count == arrayOfImages.length - 1) {
+            count = 0;
+          } else {
+            count++;
+          }
+          image.src = arrayOfImages[count];
+        }, 2000);
+      }
+
+      showImage();
+    </script>
+  </body>
+</html>

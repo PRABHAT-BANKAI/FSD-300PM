@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      //## 7. find the sum of elements whose occurrence is 2 or more than 2.
+
+      let arr = [1, 2, 3, 4, 5, 2, 2, 6, 7, 8, 2, 2, 9, 3, 3, 5, 5, 9, 8];
+      let object = {};
+
+      for (let i = 0; i < arr.length; i++) {
+        if (object[arr[i]] == undefined) {
+          object[arr[i]] = 1;
+        } else {
+          object[arr[i]]++;
+        }
+      }
+      console.log(object);
+
+      let sum = 0;
+
+      for (let key in object) {
+        // in key word used for object to ileterate
+        if (object[key] >= 2) {
+          sum += Number(key);
+        }
+      }
+      console.log(sum); // 26
+    </script> -->
+    <p id="name"></p>
+    <button id="btn">click me</button>
+    <script>
+      let paragraph = document.querySelector("#name");
+      let button = document.querySelector("#btn");
+      button.addEventListener("click", () => {
+        paragraph.innerText = "arshil";
+      });
+
+      let array = [12, 5, 5, 67, 100];
+
+      const storeValue = array.reduce((acc, element) => {
+        acc += element;
+
+        return acc;
+      }, 0);
+      console.log(storeValue);
+    </script>
+  </body>
+</html>
