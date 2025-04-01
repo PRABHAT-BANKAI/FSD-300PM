@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function UserData(name, age, place, salary) {
+        this.name = name;
+        this.age = age;
+        this.place = place;
+        this.salary = salary;
+        this.print = function () {
+          console.log(`name:${this.name} `);
+        };
+      }
+
+      let krishData = new UserData("krish", 1, "ahmedebad", 1241);
+      console.log(krishData);
+      krishData.print();
+    </script>
+  </body>
+</html>
