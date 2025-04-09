@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>3 Types of Storage</h1>
+    <ul>
+      <li>Local Storage</li>
+      <li>session storage</li>
+      <li>cookies</li>
+    </ul>
+
+    <p>Count : <span id="count"></span></p>
+    <button id="btn">increment</button>
+
+    <script>
+      let count = document.querySelector("#count");
+      let btn = document.querySelector("#btn");
+      let value = localStorage.getItem("countData")||0;
+
+      showCount();
+
+      btn.addEventListener("click", () => {
+        value++;
+        localStorage.setItem("countData",value)
+        showCount();
+      });
+
+      function showCount() {
+        count.innerText = value;
+      }
+    </script>
+  </body>
+</html>
