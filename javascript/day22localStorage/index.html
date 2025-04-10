@@ -15,23 +15,28 @@
 
     <p>Count : <span id="count"></span></p>
     <button id="btn">increment</button>
-
+    <button id="clear">Clear</button>
     <script>
       let count = document.querySelector("#count");
       let btn = document.querySelector("#btn");
-      let value = localStorage.getItem("countData")||0;
-
+      let value = localStorage.getItem("countData") || 0;
+      let clear = document.querySelector("#clear");
       showCount();
 
       btn.addEventListener("click", () => {
         value++;
-        localStorage.setItem("countData",value)
+        localStorage.setItem("countData", value);
         showCount();
       });
 
       function showCount() {
         count.innerText = value;
       }
+
+      clear.addEventListener("click", () => {
+        localStorage.clear();
+        // localStorage.removeItem("countData")
+      });
     </script>
   </body>
 </html>
