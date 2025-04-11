@@ -11,12 +11,16 @@
     <div id="container"></div>
 
     <script>
-      let todolist = [];
+      let todolist = JSON.parse(localStorage.getItem("taskData")) || [];
       let text = document.querySelector("#text");
       let addBtn = document.getElementById("add-btn");
       let container = document.querySelector("#container");
 
       addBtn.addEventListener("click", () => {
+        if (!text.value.trim()) {
+          alert("Please enter a task before adding it to the list.");
+          return;
+        }
         todolist.push(text.value);
         localStorage.setItem("taskData", JSON.stringify(todolist));
         console.log(localStorage.getItem("taskData"));
@@ -30,10 +34,27 @@
         } else {
           container.innerHTML = "";
           todolist.forEach((todo, index) => {
+            let card = document.createElement("div");
             let paragraph = document.createElement("p");
-            paragraph.innerText = todo;
+            let dltBtn = document.createElement("button");
+            let editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            dltBtn.textContent = "Delete";
+            editBtn.addEventListener("click",()=>{
+              let newTask = prompt("enter your task",todo)
+              todolist[index] = newTask;
+              localStorage.setItem("taskData", JSON.stringify(todolist));
+              showData();
+            })
+            dltBtn.addEventListener("click", () => {
+            todolist = todolist.filter((todo, i) => i != index);
+            localStorage.setItem("taskData", JSON.stringify(todolist));
+            showData();
 
-            container.append(paragraph);
+            });
+            paragraph.innerText = todo;
+            card.append(paragraph, dltBtn, editBtn);
+            container.append(card);
           });
         }
       }
@@ -42,3 +63,16 @@
     </script>
   </body>
 </html>
+
+<!-- 0!=2
+1!=2
+2!=2
+3!=2
+4!=2 -->
+<!-- 
+todolist[index] = javascript
+
+
+todolist[2] = javascript
+
+string[2] = a -->
