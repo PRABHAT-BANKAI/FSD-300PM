@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="./cart.html">Cart Section</a>
+    <h1>product page</h1>
+    <input type="text" id="search" placeholder="Search for products..." />
+
+    <div id="product-container"></div>
+
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cartData")) || [];
+      let productList = [
+        { name: "adidas", price: 10 },
+        { name: "reebok", price: 20 },
+        { name: "nike", price: 30 },
+        { name: "puma", price: 40 },
+        { name: "underarmour", price: 50 },
+        { name: "newbalance", price: 60 },
+        { name: "asics", price: 70 },
+        { name: "brooks", price: 80 },
+        { name: "hoka", price: 90 },
+        { name: "mizuno", price: 100 },
+      ];
+
+      let searchInput = document.getElementById("search");
+
+      let filteredProducts = productList;
+      // console.log(filteredProducts== productList)
+      searchInput.addEventListener("input", function (e) {
+        let searchValue = e.target.value.toLowerCase();
+        filteredProducts = productList.filter((product) =>
+          product.name.toLowerCase().includes(searchValue)
+        );
+        showData();
+      });
+      function showData() {
+        let productContainer = document.getElementById("product-container");
+        productContainer.innerHTML = "";
+        filteredProducts.forEach((product) => {
+          let productDiv = document.createElement("div");
+          let btn = document.createElement("button");
+          btn.addEventListener("click", function () {
+            console.log("hello")
+            if (cart.some((element)=>element.name==product.name)) {
+              alert("product already in cart");
+              return;
+            }
+            let quantity = 1;
+            cart.push({ ...product, quantity });
+            localStorage.setItem("cartData", JSON.stringify(cart));
+            alert("product added to cart");
+            console.log(cart);
+          });
+          btn.innerText = "add to cart";
+          productDiv.innerHTML = `<h2>${product.name}</h2><p>${product.price}</p>`;
+          productContainer.append(productDiv, btn);
+        });
+      }
+
+      showData();
+    </script>
+  </body>
+</html>

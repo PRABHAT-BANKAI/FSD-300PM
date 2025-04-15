@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        gap: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cart Section</h1>
+
+    <div class="container"></div>
+
+    <p class="total"></p>
+
+    <script>
+      let cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+      let container = document.querySelector(".container");
+      let total = document.querySelector(".total");
+      let sum = 0;
+      function showData() {
+        cartData.forEach((product) => {
+          let card = document.createElement("div");
+          card.style.border = "1px solid black";
+          card.style.width = "200px";
+          let name = document.createElement("h3");
+          name.innerText = `Name  : ${product.name}`;
+          let price = document.createElement("p");
+          price.innerText = `Price  : ${product.price}`;
+          let quantity = document.createElement("p");
+          quantity.innerText = product.quantity;
+          card.append(name, price, quantity);
+          container.append(card);
+
+          sum += product.price;
+          total.innerText = `Total Price : ${sum}`;
+        });
+      }
+
+      showData();
+    </script>
+  </body>
+</html>

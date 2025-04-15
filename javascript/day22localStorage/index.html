@@ -35,6 +35,8 @@
 
       clear.addEventListener("click", () => {
         localStorage.clear();
+        value = 0
+        localStorage.setItem("countData", value);
         // localStorage.removeItem("countData")
       });
     </script>
