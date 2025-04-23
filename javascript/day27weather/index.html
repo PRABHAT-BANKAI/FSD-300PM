@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="loc" type="text" />
+    <button id="search">search</button>
+    <script>
+      const apikey = "ee00f0931ee9d5bf60ca286cbd6c50f1";
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=gujarat`;
+      // `&appid=${apikey}
+      let loc = document.getElementById("loc");
+      const search = document.getElementById("search");
+
+      search.addEventListener("click", () => {
+        if (!loc.value) {
+          alert("Please enter a loc");
+          return;
+        }
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${loc.value}` +
+            `&appid=${apikey}`
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            loc.value = "";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+
+      // fetch(apiUrl + `&appid=${apikey}`)
+      //   .then((res) => res.json())
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+    </script>
+  </body>
+</html>
