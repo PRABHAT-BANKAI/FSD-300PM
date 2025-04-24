@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // what is promises
+      // promise is an object
+
+      // 3 statement will return
+      // pending
+      // fullfilled
+      // rejected
+      let number = 10;
+
+      const response = new Promise((resolve, reject) => {
+        if (10 % 2 == 1) {
+          resolve("even");
+        } else {
+          reject("odd");
+        }
+      });
+
+      response
+        .then((res) => {
+          console.log(res, "resolve");
+        })
+        .catch((err) => {
+          console.log(err, "reject");
+        });
+
+      console.log("hello");
+
+      // es6 async await
+    </script>
+  </body>
+</html>
