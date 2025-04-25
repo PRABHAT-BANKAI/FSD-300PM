@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img id="image" src="" alt="" height="200px">
+    <script type="module">
+      import { sum, sub,image } from "./script.js";
+      import { multi } from "./script2.js";
+
+      let image1 = document.querySelector("#image")
+      image1.src = image
+      console.log(sum(5, 3));
+      console.log(sub(5, 3));
+      console.log(multi(5, 3));
+    </script>
+  </body>
+</html>
