@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>async await (is a feature ES6)</h1>
+    <div id="card"></div>
+
+    <script>
+      let card = document.getElementById("card");
+      async function showData() {
+        try {
+          console.log("1");
+          let response = await fetch("https://fakestoreapi.com/products");
+          let result = await response.json();
+        
+          result.forEach(element => {
+            let para = document.createElement("p");
+            para.innerText = element.title
+            card.append(para);
+          });
+
+      
+
+          console.log(result, "res");
+        } catch (error) {
+          console.log(error);
+        }
+
+        console.log("2");
+      }
+      showData();
+    </script>
+  </body>
+</html>

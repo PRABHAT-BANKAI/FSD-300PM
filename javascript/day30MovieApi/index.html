@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Movie APi</h1>
+    <div class="main"></div>
+    <script>
+      let main = document.querySelector(".main");
+      let image = document.createElement("img");
+      let title = document.createElement("p");
+      let releaseDate = document.createElement("p");
+      let card = document.createElement("div");
+      async function showData() {
+        const url =
+          "https://movies-ratings2.p.rapidapi.com/ratings?id=tt0111161";
+        const options = {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "0190d31adamsh58a693a760a401bp145c8ajsn0513254521ed",
+            "x-rapidapi-host": "movies-ratings2.p.rapidapi.com",
+          },
+        };
+
+        try {
+          const response = await fetch(url, options);
+          const result = await response.json();
+          console.log(result);
+          image.src = result.media.poster_path;
+          image.style.height = "200px";
+          title.innerText = `Title : ${result.media.title}`;
+          releaseDate.innerText = result.media.release_date;
+
+          result.media.genres.forEach((element) => {
+            let text = document.createElement("p");
+            text.innerText = element.name;
+            card.append(text);
+          });
+
+          main.append(image, title, releaseDate, card);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      showData()
+    </script>
+  </body>
+</html>
