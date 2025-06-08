@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todolist</h1>
+    <input id="inputText" type="text" />
+
+    <button id="btn">Add</button>
+
+    <input id="srch" type="text" placeholder="searching" />
+
+    <div id="main-container"></div>
+
+    <script>
+      let array = JSON.parse(localStorage.getItem("localData")) || [];
+      let mainContainer = document.querySelector("#main-container");
+      let inputText = document.querySelector("#inputText");
+      let btn = document.querySelector("#btn");
+      let srch = document.getElementById("srch");
+
+      srch.addEventListener("input", () => {
+        console.log(srch.value);
+        let searchFilterData = array.filter(
+          (item) => item.includes(srch.value.toLowerCase()) //no//true
+        );
+        showData(searchFilterData);
+      });
+
+      btn.addEventListener("click", () => {
+        if (!inputText.value.trim()) {
+          alert("First enter you task");
+          return;
+        }
+        array.push(inputText.value);
+        inputText.value = "";
+        localStorage.setItem("localData", JSON.stringify(array));
+        showData(array);
+      });
+
+      function showData(todoData) {
+        mainContainer.innerHTML = "";
+        todoData.forEach((item, index) => {
+          let card = document.createElement("div");
+          let para = document.createElement("p");
+          let dlt = document.createElement("button");
+          let edit = document.createElement("button");
+          dlt.textContent = "delete";
+          dlt.addEventListener("click", () => {
+            array = array.filter((element, id) => index != id);
+            localStorage.setItem("localData", JSON.stringify(array));
+            showData(array);
+          });
+          edit.textContent = "edit";
+
+          edit.addEventListener("click", () => {
+            let newTextValue = prompt(array[index]);
+            array[index] = newTextValue; // array[index]  3 = batman
+            localStorage.setItem("localData", JSON.stringify(array));
+            showData(array);
+          });
+
+          para.innerText = item;
+
+          card.append(para, dlt, edit);
+          mainContainer.append(card);
+        });
+      }
+
+      showData(array);
+    </script>
+  </body>
+</html>
