@@ -1,0 +1,19 @@
+.star {
+  font-size: 100px;
+  color: red;
+  /* background-color: yellow; */
+  animation-name: magic-box;
+  transition: 7s;
+   animation-duration: 10s;
+}
+
+@keyframes magic-box {
+  from {
+    margin-left: 0;
+    transform: rotate(0deg);
+  }
+  to {
+    margin-left: 200px;
+    transform: rotate(5000deg);
+  }
+}
