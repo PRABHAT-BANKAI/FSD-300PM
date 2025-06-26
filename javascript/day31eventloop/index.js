@@ -16,7 +16,7 @@ async function Show() {
   setTimeout(()=>{
     console.log(17)
 })
-console.log("hello1")
+
   let response = await result;
   // console.log(response)
   setTimeout(()=>{
