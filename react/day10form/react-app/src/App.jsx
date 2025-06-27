@@ -3,9 +3,39 @@ import React, { useState } from "react";
 const App = () => {
   const [dark, setDark] = useState(false);
   const [data, setData] = useState({ name: "", email: "", password: "" });
+  const [submitData, setSubmitData] = useState(null);
+  const [error, setError] = useState({});
   function handleSubmit(e) {
-    e.preventDefault();
-    console.log(data);
+    e.preventDefault(); // cannot page refresh
+    if (validation()) {
+      setSubmitData(data);
+      setData({ name: "", email: "", password: "" });
+    }
+  }
+
+  function validation() {
+    let obj = {};
+    let val = true;
+
+    if (!data.name.trim()) {
+      val = false;
+      obj.name = "name is not valid ";
+    }
+
+    if (!data.email.trim()) {
+      val = false;
+      obj.email = "email is not valid ";
+    }
+    if (!data.password.trim()) {
+      val = false;
+      obj.password = "password is not valid ";
+    } else if (data.password > 8) {
+      obj.password = "password is length should be greater than 8 characters";
+      val = false;
+    }
+
+    setError(obj);
+    return val;
   }
   return (
     <>
@@ -24,6 +54,7 @@ const App = () => {
               placeholder="Enter your Name"
             />
           </label>
+          {error.name && <p style={{ color: "red" }}>{error.name}</p>}
         </div>
         <div>
           <label htmlFor="">
@@ -36,6 +67,7 @@ const App = () => {
               placeholder="enter your email"
             />
           </label>
+          {error.email && <p style={{ color: "red" }}>{error.email}</p>}
         </div>
         <div>
           <label htmlFor="">
@@ -48,11 +80,20 @@ const App = () => {
               placeholder="enter your password"
             />
           </label>
+          {error.password && <p style={{ color: "red" }}>{error.password}</p>}
         </div>
         <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           Submit
         </button>
       </form>
+
+      {submitData && (
+        <div>
+          <p>{submitData.name}</p>
+          <p>{submitData.email}</p>
+          <p>{submitData.password}</p>
+        </div>
+      )}
     </>
   );
 };
