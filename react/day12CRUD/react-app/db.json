@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "nike",
       "price": 1200
     },
@@ -9,6 +9,11 @@
       "id": "c112",
       "title": "jorden",
       "price": "120000"
+    },
+    {
+      "id": "1a46",
+      "title": "action",
+      "price": "799"
     }
   ]
 }
