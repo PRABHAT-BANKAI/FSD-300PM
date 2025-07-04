@@ -4,13 +4,25 @@ import { Link } from "react-router";
 
 const Create = () => {
   const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
   const [productInput, setProductInput] = useState({ title: "", price: "" });
+  const [search, setSearch] = useState("");
+
+  function handleSearch(e) {
+    setSearch(e.target.value);
+
+    let searchFilterData = data.filter((item) =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilterData(searchFilterData);
+  }
 
   async function getData() {
     try {
       let res = await axios.get("http://localhost:3000/products");
       console.log(res.data);
       setData(res.data);
+      setFilterData(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -33,12 +45,40 @@ const Create = () => {
     alert("delete successfully");
     getData();
   }
+  function handleAsc() {
+    let sortData = data.sort((a, b) => a.price - b.price);
+    setData([...sortData]);
+  }
+  function handleDes() {
+    let sortData = data.sort((a, b) => b.price - a.price);
+    setData([...sortData]);
+  }
+  function handleSelect(e) {
+    let allData = data;
+    if (e.target.value === "all") {
+      setFilterData(allData);
+      return;
+    }
+    let filterData = allData.filter((item) => item.category === e.target.value);
+    setFilterData(filterData);
+  }
   useEffect(() => {
     getData();
   }, []);
   return (
     <div>
       <h1>Product page</h1>
+      <div>
+        <button onClick={handleAsc}>ascending</button>
+        <button onClick={handleDes}>Descending</button>
+        <select onChange={handleSelect} name="" id="">
+          <option value="all">All</option>
+          <option value="shirt">Shirt</option>
+          <option value="shoes">Shoes</option>
+          <option value="jeans">jeans</option>
+        </select>
+        <input type="text" placeholder="Searching.." onChange={handleSearch} />
+      </div>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -60,8 +100,8 @@ const Create = () => {
         <button>Submit</button>
       </form>
 
-      <div>
-        {data.map((item) => {
+      <div style={{ display: "flex", gap: "5px" }}>
+        {filterData.map((item) => {
           return (
             <div
               key={item.id}
@@ -73,6 +113,7 @@ const Create = () => {
             >
               <p>Title:{item.title}</p>
               <p>Price:{item.price}</p>
+              <p>Category:{item.category}</p>
               <button
                 onClick={() => {
                   handleDelete(item.id);

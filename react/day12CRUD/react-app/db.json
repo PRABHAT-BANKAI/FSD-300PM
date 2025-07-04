@@ -3,17 +3,32 @@
     {
       "id": "1",
       "title": "nike",
+      "category":"shoes",
       "price": 1200
     },
     {
       "id": "c112",
       "title": "jorden",
+      "category":"shoes",
       "price": "120000"
     },
     {
       "id": "1a46",
       "title": "action",
+      "category":"shirt",
       "price": "799"
+    },
+    {
+      "id": "458b",
+      "title": "puma",
+      "category":"shirt",
+      "price": "100"
+    },
+    {
+      "id": "0aba",
+      "title": "flite",
+      "category":"jeans",
+      "price": "200"
     }
   ]
 }
