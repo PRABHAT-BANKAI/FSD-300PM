@@ -6,28 +6,34 @@ const Create = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [productInput, setProductInput] = useState({ title: "", price: "" });
-  const [search, setSearch] = useState("");
+  const [count, setCount] = useState(1);
+  const [pageCount, setPageCount] = useState(null);
 
   function handleSearch(e) {
-    setSearch(e.target.value);
+    // setSearch(e.target.value);
 
     let searchFilterData = data.filter((item) =>
-      item.title.toLowerCase().includes(search.toLowerCase())
+      item.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilterData(searchFilterData);
   }
 
   async function getData() {
     try {
-      let res = await axios.get("http://localhost:3000/products");
-      console.log(res.data);
-      setData(res.data);
-      setFilterData(res.data);
+      let res = await axios.get(
+        `http://localhost:3000/products/?_page=${count}&_per_page=3`
+      );
+      console.log(res);
+      setData(res.data.data);
+      setFilterData(res.data.data);
+
+      setPageCount(res.data.pages);
     } catch (error) {
       console.log(error);
     }
   }
 
+  console.log(pageCount)
   async function handleSubmit(e) {
     e.preventDefault();
     if (productInput.title == "" && productInput.price == "") {
@@ -64,7 +70,7 @@ const Create = () => {
   }
   useEffect(() => {
     getData();
-  }, []);
+  }, [count]);
   return (
     <div>
       <h1>Product page</h1>
@@ -79,7 +85,6 @@ const Create = () => {
         </select>
         <input type="text" placeholder="Searching.." onChange={handleSearch} />
       </div>
-
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -99,7 +104,6 @@ const Create = () => {
         />
         <button>Submit</button>
       </form>
-
       <div style={{ display: "flex", gap: "5px" }}>
         {filterData.map((item) => {
           return (
@@ -128,6 +132,13 @@ const Create = () => {
           );
         })}
       </div>
+      <button disabled={count == 1} onClick={() => setCount(count - 1)}>
+        Back
+      </button>
+      <span>{count}</span>
+      <button disabled={count == pageCount} onClick={() => setCount(count + 1)}>
+        Next
+      </button>
     </div>
   );
 };
