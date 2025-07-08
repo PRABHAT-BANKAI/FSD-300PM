@@ -33,7 +33,7 @@ const Create = () => {
     }
   }
 
-  console.log(pageCount)
+  console.log(pageCount);
   async function handleSubmit(e) {
     e.preventDefault();
     if (productInput.title == "" && productInput.price == "") {
@@ -127,6 +127,9 @@ const Create = () => {
               </button>
               <Link to={`/update/${item.id}`}>
                 <button>Edit</button>
+              </Link>
+              <Link to={`/extra/userName="batman"`}>
+                <button>Extra</button>
               </Link>
             </div>
           );
