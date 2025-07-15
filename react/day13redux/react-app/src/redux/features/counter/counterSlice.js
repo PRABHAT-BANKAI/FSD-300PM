@@ -1,26 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 0,
-}
+  value: JSON.parse(localStorage.getItem("counterData")) || 0,
+};
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1
+      // action
+      state.value += 1;
+      localStorage.setItem("counterData", JSON.stringify(state.value));
     },
     decrement: (state) => {
-      state.value -= 1
+      state.value -= 1;
+      localStorage.setItem("counterData", JSON.stringify(state.value));
     },
     incrementByAmount: (state, action) => {
-      state.value += action.payload
+      console.log(action);
+      state.value += action.payload;
+      localStorage.setItem("counterData", JSON.stringify(state.value));
+    },
+    multiplyByAmount: (state, action) => {
+      state.value *= action.payload;
+      localStorage.setItem("counterData", JSON.stringify(state.value));
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, multiplyByAmount } = counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;
