@@ -1,0 +1,21 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  todo: JSON.parse(localStorage.getItem("todoDatas")) || [],
+};
+
+export const todoSlice = createSlice({
+  name: "todoData",
+  initialState,
+  reducers: {
+    addTodo: (state, action) => {
+      state.todo = [...state.todo, action.payload];
+      localStorage.setItem("todoDatas", JSON.stringify(state.todo));
+    },
+  },
+});
+
+// Action creators are generated for each case reducer function
+export const { addTodo } = todoSlice.actions;
+
+export default todoSlice.reducer;
