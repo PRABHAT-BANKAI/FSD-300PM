@@ -1,12 +1,43 @@
-# React + Vite
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+// thunk is a middleware where handle asynchronous and synchronous operations
+export const fetchProducts = createAsyncThunk("fetchProductData", async () => {
+  const response = await axios.get("https://fakestoreapi.com/products");
+  return response.data;
+});
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+const initialState = {
+  product: [],
+  error: "",
+};
 
-Currently, two official plugins are available:
+export const productSlice = createSlice({
+  name: "productData",
+  initialState,
+  reducers: {
+    // synchronous code ko handle krne k liyae
+    increment: (state) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the Immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      // state.product = []
+    },
+  },
+  extraReducers: (builder) => {
+    // asyncronous code ko handle krne k liaye
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.product = [...action.payload];
+      
+    });
+    builder.addCase(fetchProducts.rejected, (state, action) => {
+      // Add error handling here
+      state.error = "fetched failed ";
+    });
+  },
+});
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+// Action creators are generated for each case reducer function
+export const { increment } = productSlice.actions;
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+export default productSlice.reducer;

@@ -1,7 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchProducts = createAsyncThunk("fetchProductData", async () => {
+  const response = await axios.get("https://fakestoreapi.com/products");
+  console.log(response.data, "data");
+  return response.data;
+});
 
 const initialState = {
   todo: JSON.parse(localStorage.getItem("todoDatas")) || [],
+  product: [],
 };
 
 export const todoSlice = createSlice({
@@ -23,6 +31,15 @@ export const todoSlice = createSlice({
 
       localStorage.setItem("todoDatas", JSON.stringify(state.todo));
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.product = [...action.payload];
+
+      builder.addCase(fetchProducts.rejected, (state, action) => {
+        console.log(action.payload);
+      });
+    });
   },
 });
 

@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, updateTodo } from "../redux/todolist/todoslice";
+import {
+  addTodo,
+  deleteTodo,
+  fetchProducts,
+  updateTodo,
+} from "../redux/todolist/todoslice";
 
 const Todolist = () => {
   const [inputText, setInputText] = useState("");
   const todolist = useSelector((state) => state.todolistStore.todo);
+  const product = useSelector((state) => {
+    state.todolistStore.product
+    console.log(state.todolistStore.product)
+  });
   const [boolean, setBoolean] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
   const dispatch = useDispatch();
@@ -24,6 +33,12 @@ const Todolist = () => {
     alert("task added sucessfully");
     setInputText("");
   }
+
+
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <div>
       <h1>TodoList</h1>
