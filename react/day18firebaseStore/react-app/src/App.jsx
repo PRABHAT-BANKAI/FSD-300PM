@@ -1,4 +1,11 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./config/firebase";
 
@@ -22,7 +29,7 @@ const App = () => {
     } catch (error) {
       alert("message", error);
     }
-    getData()
+    getData();
     setInputText("");
   }
 
@@ -40,6 +47,32 @@ const App = () => {
     );
   }
 
+  async function handleDelete(id) {
+    let deleteData = doc(database, id);
+    await deleteDoc(deleteData);
+    alert("your data delete successfully");
+    getData();
+  }
+
+  function handleEdit(data) {
+    setInputText(data.todo);
+    setBoolean(true);
+    setEditId(data.id);
+  }
+
+  async function handleUpdate() {
+    if (!inputText.trim()) {
+      alert("you have field text first");
+      return;
+    }
+    let updateData = doc(database, editId);
+    await updateDoc(updateData, { todo: inputText });
+    alert("updated successfully");
+    setBoolean(false);
+    setInputText("");
+    getData();
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -52,7 +85,11 @@ const App = () => {
         onChange={(e) => setInputText(e.target.value)}
         value={inputText}
       />
-      <button onClick={handleAdd}>add</button>
+      {boolean ? (
+        <button onClick={handleUpdate}>update</button>
+      ) : (
+        <button onClick={handleAdd}>add</button>
+      )}
 
       <div>
         {todoData.length == 0 ? (
@@ -62,8 +99,14 @@ const App = () => {
             return (
               <div key={item.id}>
                 <p>Todo:{item.todo}</p>
-                <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => handleEdit(item)}>Edit</button>
+                <button
+                  onClick={() => {
+                    handleDelete(item.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             );
           })
