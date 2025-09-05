@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Home page</h1>
+
+    <table border="">
+      <form action="/add-data" method="post">
+        <tr>
+          <td>Name:</td>
+          <td><input name="name" type="text" /></td>
+        </tr>
+        <tr>
+          <td>Subject</td>
+          <td><input name="subject" type="text" /></td>
+        </tr>
+        <tr>
+          <td>Marks</td>
+          <td><input name="marks" type="text" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <table border="">
+      <tr>
+        <td>Name</td>
+        <td>Subject</td>
+        <td>Marks</td>
+        <td>Action</td>
+      </tr>
+      <tbody>
+        <% array.forEach((element)=>{ %>
+
+        <tr>
+          <td><%= element.name %></td>
+          <td><%= element.subject %></td>
+          <td><%= element.marks %></td>
+          <td><button>Edit</button>|| <button>Delete</button></td>
+
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
