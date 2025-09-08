@@ -33,6 +33,25 @@ app.post("/add-data", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about");
 });
+app.get("/delete/:id", (req, res) => {
+  console.log(req.params.id);
+  array = array.filter((element, index) => index != req.params.id); // 0!=3 true// 1!=3// 3!=3
+  res.redirect("/");
+});
+
+app.get("/edit/:id", (req, res) => {
+  let updateData = array[req.params.id];
+
+  return res.render("update", { updateData, updateId: req.params.id });
+});
+
+app.post("/update-data", (req, res) => {
+  let { updateId, name, marks, subject } = req.body;
+
+  array[updateId] = { name, marks, subject };
+
+  return res.redirect("/");
+});
 
 app.listen(PORT, (err) => {
   if (err) {

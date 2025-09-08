@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="">
+      <h1>Update Data</h1>
+      <form action="/update-data" method="post">
+        <input type="hidden" name="updateId" value="<%= updateId %>">
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input name="name" type="text" value="<%= updateData.name %>" />
+          </td>
+        </tr>
+        <tr>
+          <td>Subject</td>
+          <td>
+            <input
+              name="subject"
+              type="text"
+              value="<%= updateData.subject %>"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Marks</td>
+          <td>
+            <input name="marks" type="text" value="<%= updateData.marks %>" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>
