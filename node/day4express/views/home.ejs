@@ -23,20 +23,49 @@
           <td><input name="marks" type="text" /></td>
         </tr>
         <tr>
+          <td>Gender</td>
+          <td>
+            <input name="gender" type="radio" value="male" />Male
+            <input name="gender" type="radio" value="female" />Female
+          </td>
+        </tr>
+        <tr>
+          <td>Hobbies</td>
+          <td>
+            <input name="hobbies" type="checkbox" value="cycling" /> Cycling
+            <input name="hobbies" type="checkbox" value="coding" />coding
+            <input name="hobbies" type="checkbox" value="writing" />writing
+          </td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td>
+            <select name="city" id="">
+              <option >All cities</option>
+              <option  value="delhi">Delhi</option>
+              <option value="ahmedabad">ahmedabad</option>
+              <option value="mumbai">Mumbai</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
           <td></td>
           <td><button>Submit</button></td>
         </tr>
       </form>
     </table>
 
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
     <table border="">
       <tr>
         <td>Name</td>
         <td>Subject</td>
         <td>Marks</td>
+        <td>Gender</td>
+        <td>Hobbies</td>
+        <td>City</td>
         <td>Action</td>
       </tr>
       <tbody>
@@ -46,8 +75,13 @@
           <td><%= element.name %></td>
           <td><%= element.subject %></td>
           <td><%= element.marks %></td>
-          <td> <a href="/edit/<%= index %>"><button>Edit</button></a> <a href="/delete/<%= index %>"><button>Delete</button></a></td>
-
+          <td><%= element.gender %></td>
+          <td><%= element.hobbies %></td>
+          <td><%= element.city %></td>
+          <td>
+            <a href="/edit/<%= index %>"><button>Edit</button></a>
+            <a href="/delete/<%= index %>"><button>Delete</button></a>
+          </td>
         </tr>
 
         <% }) %>

@@ -46,9 +46,9 @@ app.get("/edit/:id", (req, res) => {
 });
 
 app.post("/update-data", (req, res) => {
-  let { updateId, name, marks, subject } = req.body;
+  let { updateId, name, marks, subject, city, gender, hobbies } = req.body;
 
-  array[updateId] = { name, marks, subject };
+  array[updateId] = { name, marks, subject, city, gender, hobbies };
 
   return res.redirect("/");
 });
