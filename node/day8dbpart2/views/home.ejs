@@ -9,7 +9,7 @@
     <h1>Product Page</h1>
 
     <table border="">
-      <form action="/add" method="post">
+      <form action="/add" method="post" enctype="multipart/form-data">
         <tr>
           <td>user Name:</td>
           <td><input name="userName" type="text" /></td>
@@ -42,7 +42,10 @@
         <tr>
           <td><%=element.userName %></td>
           <td><%= element.email %></td>
-          <td><button>Edit</button> <a href="/delete/<%= element.id %>"><button>Delete</button></a></td>
+          <td>
+            <a href="/edit/<%= element.id %>"><button>Edit</button></a>
+            <a href="/delete/<%= element.id %>"><button>Delete</button></a>
+          </td>
         </tr>
 
         <% }) %>

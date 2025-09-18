@@ -40,6 +40,31 @@ app.get("/delete/:id", async (req, res) => {
   }
 });
 
+app.get("/edit/:id", async (req, res) => {
+  try {
+    let { id } = req.params;
+    console.log(id);
+
+    let productData = await UserModel.findById({ _id: id });
+    console.log(productData);
+    res.render("update", { productData });
+  } catch (error) {
+    console.log(error);
+    res.redirect("/");
+  }
+});
+
+app.post("/update", async (req, res) => {
+  try {
+    await UserModel.findByIdAndUpdate(req.body.id, req.body);
+    console.log("update successfully");
+    return res.redirect("/");
+  } catch (error) {
+    console.log(error);
+    return res.redirect("back");
+  }
+});
+
 app.listen(PORT, (err) => {
   if (err) {
     console.log("server is not running");
