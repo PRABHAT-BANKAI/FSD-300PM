@@ -1,9 +1,13 @@
 const express = require("express");
 const { dbconnect } = require("./config/db");
 const { UserModel } = require("./models/userModel");
+const upload = require("./middleware/multer");
+const path = require("path");
+const fs = require("fs");
+
 const PORT = 8080;
 const app = express();
-
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,8 +21,14 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.post("/add", async (req, res) => {
+app.post("/add", upload, async (req, res) => {
+  // console.log(req.file.f)
+  console.log(req.file);
   try {
+    if (req.file) {
+      req.body.userImage = "/uploads" + "/" + req.file.filename;
+    }
+
     await UserModel.create(req.body);
     console.log("user added successfully");
   } catch (error) {
@@ -29,8 +39,10 @@ app.post("/add", async (req, res) => {
 
 app.get("/delete/:id", async (req, res) => {
   const { id } = req.params;
+  const userData = await UserModel.findById(id);
   console.log(id);
   try {
+    fs.unlinkSync(path.join(__dirname, userData.userImage));
     await UserModel.findByIdAndDelete(id);
     console.log("deleted successfully");
     res.redirect("/");
