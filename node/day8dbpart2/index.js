@@ -58,7 +58,7 @@ app.get("/edit/:id", async (req, res) => {
     console.log(id);
 
     let productData = await UserModel.findById({ _id: id });
-    console.log(productData);
+    // console.log(productData);
     res.render("update", { productData });
   } catch (error) {
     console.log(error);
@@ -66,14 +66,24 @@ app.get("/edit/:id", async (req, res) => {
   }
 });
 
-app.post("/update", async (req, res) => {
+app.post("/update", upload, async (req, res) => {
+  console.log(req.body);
   try {
-    await UserModel.findByIdAndUpdate(req.body.id, req.body);
+    let response = await UserModel.findById(req.body.id);
+    console.log(response);
+    if (req.file) {
+      fs.unlinkSync(path.join(__dirname, response.userImage));
+
+      console.log(req.body.userImage, "req");
+      console.log(response.userImage, "response");
+      req.body.userImage = "/uploads" + "/" + req.file.filename;
+    }
+    await UserModel.findByIdAndUpdate(req.body.id, req.body); //{id,userName,email,userImage}
     console.log("update successfully");
     return res.redirect("/");
   } catch (error) {
     console.log(error);
-    return res.redirect("back");
+    return res.redirect("/");
   }
 });
 
