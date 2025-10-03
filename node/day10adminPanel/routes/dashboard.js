@@ -4,11 +4,20 @@ const UserModel = require("../models/userModels");
 const dashboardRouter = express.Router();
 
 dashboardRouter.get("/", (req, res) => {
-  return res.render("login");
+  let getData = req.cookies.userData;
+  if (!getData) {
+    return res.render("login");
+  }
+  return res.redirect("/dashboard");
 });
 
 dashboardRouter.get("/dashboard", (req, res) => {
-  return res.render("dashboard");
+  let getData = req.cookies.userData;
+  console.log(getData);
+  if (getData) {
+    return res.render("dashboard");
+  }
+  return res.redirect("/");
 });
 
 dashboardRouter.get("/signUp", (req, res) => {
@@ -34,6 +43,7 @@ dashboardRouter.post("/login", async (req, res) => {
     const userData = await UserModel.findOne({ userName });
 
     if (userData.password === password) {
+      res.cookie("userData", userData);
       res.redirect("/dashboard");
     } else {
       console.log("password is not match");
@@ -48,10 +58,19 @@ dashboardRouter.post("/login", async (req, res) => {
 dashboardRouter.get("/usersTable", async (req, res) => {
   try {
     let store = await UserModel.find({});
-    res.render("userTables",{store});
+    let getData = req.cookies.userData;
+    if (!getData) {
+      return res.render("login");
+    }
+    res.render("userTables", { store });
   } catch (error) {
     console.log(error);
     res.redirect("/");
   }
+});
+
+dashboardRouter.get("/logout", (req, res) => {
+  res.clearCookie("userData");
+  res.redirect("/");
 });
 module.exports = { dashboardRouter };
