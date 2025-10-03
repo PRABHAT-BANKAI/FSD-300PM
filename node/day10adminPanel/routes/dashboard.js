@@ -1,6 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/userModels");
-
+let nodemailer = require("nodemailer");
 const dashboardRouter = express.Router();
 
 dashboardRouter.get("/", (req, res) => {
@@ -72,5 +72,46 @@ dashboardRouter.get("/usersTable", async (req, res) => {
 dashboardRouter.get("/logout", (req, res) => {
   res.clearCookie("userData");
   res.redirect("/");
+});
+
+dashboardRouter.get("/createProduct", (req, res) => {
+  return res.render("createProduct");
+});
+
+dashboardRouter.get("/otpPage", (req, res) => {
+  return res.render("otpPage");
+});
+
+dashboardRouter.post("/forgotPassword", async (req, res) => {
+  let userData = await UserModel.findOne({ email: req.body.email });
+
+  if (!userData) {
+    console.log("user not found");
+    return;
+  }
+  let otp = Math.floor(Math.random() * 10000);
+  console.log(otp)
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "prabhssgg@gmail.com",
+      pass: "jkyn vite uqau jlmv",
+    },
+  });
+
+  let mailOptions = {
+    from: "prabhssgg@gmail.com",
+    to: userData.email,
+    subject: "forgot password OTP",
+    text: `OTP : ${otp}`,
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
 });
 module.exports = { dashboardRouter };
