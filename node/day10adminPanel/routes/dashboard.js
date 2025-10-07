@@ -90,7 +90,9 @@ dashboardRouter.post("/forgotPassword", async (req, res) => {
     return;
   }
   let otp = Math.floor(Math.random() * 10000);
-  console.log(otp)
+
+  res.cookie("storeOtp", otp);
+  console.log(otp);
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -111,7 +113,21 @@ dashboardRouter.post("/forgotPassword", async (req, res) => {
       console.log(error);
     } else {
       console.log("Email sent: " + info.response);
+      res.redirect("/otpPage");
     }
   });
+});
+
+dashboardRouter.post("/checkOtp", (req, res) => {
+  let storeOtp = req.cookies.storeOtp;
+
+  let getOtp = req.body.otpNumber;
+
+  if (getOtp === storeOtp) {
+    res.send("password change");
+  } else {
+    console.log("otp didnt matched");
+    res.redirect("/");
+  }
 });
 module.exports = { dashboardRouter };
