@@ -1,20 +1,19 @@
-const express = require("express")
-require('dotenv').config()
-const app = express()
+const express = require("express");
+const { DBconnect } = require("./config/db");
+const { userRouter } = require("./routes/userRoutes");
+require("dotenv").config();
+const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/",(req,res)=>{
+app.use("/user", userRouter);
 
-  return res.status(201).json({
-    message:"welcome to server"
-  })
-})
-
-
-app.listen(process.env.PORT,(error)=>{
-  if(error){
-    console.log("server is not running")
-    return
+app.listen(process.env.PORT, (error) => {
+  if (error) {
+    console.log("server is not running");
+    return;
   }
-  console.log("server is running ",process.env.PORT)
-})
+  DBconnect();
+  console.log("server is running ", process.env.PORT);
+});
