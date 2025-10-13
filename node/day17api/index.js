@@ -1,6 +1,7 @@
 const express = require("express");
 const { DBconnect } = require("./config/db");
 const { userRouter } = require("./routes/userRoutes");
+const { auth } = require("./middleware/auth");
 require("dotenv").config();
 const app = express();
 
@@ -8,6 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/user", userRouter);
+
+app.use(auth);
+
+app.use("/todolist", (req, res) => {
+  res.send("todolist Data");
+});
 
 app.listen(process.env.PORT, (error) => {
   if (error) {
