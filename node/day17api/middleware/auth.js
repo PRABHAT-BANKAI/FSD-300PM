@@ -1,6 +1,25 @@
+const jwt = require("jsonwebtoken");
+
 const auth = (req, res, next) => {
-  console.log(req.headers.authorization.split(" ")[1]);
-  return res.status(200).json({ message: "hello world " });
+  try {
+    let token = req.headers.authorization;
+
+    if (!token) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    let decoded = jwt.verify(token.split(" ")[1], process.env.SECRET_KEY);
+
+    if (!decoded) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    console.log(decoded);
+
+    req.body.authorId = decoded.userData._id;
+
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: error });
+  }
 };
 
 module.exports = { auth };
