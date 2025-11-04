@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      let api = "https://fakestoreapi.com/products";
+
+      async function fetchData() {
+        let responsne = await fetch(api);
+        let container = document.querySelector("#container")
+        let result = await responsne.json();
+        console.log(result);
+
+
+        result.forEach(element => {
+          let card = document.createElement("div")
+          let p = document.createElement("p")
+           p.innerText = element.title
+          card.append(p)
+          container.append(card)
+        });
+
+
+      }
+
+      fetchData();
+    </script>
+  </body>
+</html>
