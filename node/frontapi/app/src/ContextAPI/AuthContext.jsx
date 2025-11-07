@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const authContext = createContext(); // create authContext
 const AuthProvider = ({ children }) => {
@@ -15,10 +15,11 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("todoToken", JSON.stringify(auth));
   });
   return (
-    <authContext.Provider value={(auth, login)}>
+    <authContext.Provider value={{auth, login}}>
       {children}
     </authContext.Provider>
   ); // provider
 };
+export const useAuth = () => useContext(authContext);
 
 export default AuthProvider;

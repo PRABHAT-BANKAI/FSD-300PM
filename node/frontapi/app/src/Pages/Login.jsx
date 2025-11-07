@@ -1,7 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AuthProvider, { useAuth } from "../ContextAPI/AuthContext";
 
 const Login = () => {
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,11 +32,11 @@ const Login = () => {
       "https://todo-server-n1yb.onrender.com/user/login",
       formData
     );
-    console.log(response);
+    console.log(response.data);
+
+    login(response.data.token);
 
     setError("");
-    // Handle actual login logic here (e.g., API call)
-    console.log("Logging in with:", formData);
   };
 
   return (

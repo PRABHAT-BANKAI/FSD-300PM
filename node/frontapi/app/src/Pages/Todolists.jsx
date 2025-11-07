@@ -1,9 +1,38 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../ContextAPI/AuthContext";
 
 const Todolists = () => {
-  return (
-    <div>Todolists</div>
-  )
-}
+  const [todoData, setTodoData] = useState([]);
+  const { auth } = useAuth();
 
-export default Todolists
+  useEffect(() => {
+    console.log(auth);
+    axios
+      .get("https://todo-server-n1yb.onrender.com/todolist", {
+        headers: { Authorization: `Bearer ${auth}` },
+      })
+      .then((res) => {
+        console.log(res);
+        setTodoData(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [auth]);
+
+  console.log(todoData);
+  return (
+    <div>
+      <h1>Todolist</h1>
+
+      <ul>
+        {todoData.map((element) => {
+          return <li key={element._id}>{element.todoName}</li>;
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default Todolists;
