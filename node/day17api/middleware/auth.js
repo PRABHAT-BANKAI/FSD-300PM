@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const auth = (req, res, next) => {
   try {
     let token = req.headers.authorization;
+    console.log(token);
 
     if (!token) {
       return res.status(401).json({ message: "Unauthorized" });
@@ -14,10 +15,11 @@ const auth = (req, res, next) => {
     }
     console.log(decoded);
 
-    req.body.authorId = decoded.userData._id;
+    req.authorId = decoded.userData._id;
 
     next();
   } catch (error) {
+    console.log(error)
     return res.status(401).json({ message: error });
   }
 };

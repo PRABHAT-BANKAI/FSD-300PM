@@ -4,7 +4,9 @@ const { TodolistModel } = require("../models/todolistModel");
 const todolistRouter = express.Router();
 
 todolistRouter.post("/", async (req, res) => {
-  const { authorId, todoName } = req.body;
+  const { todoName } = req.body;
+  const authorId = req.authorId
+
   try {
     await TodolistModel.create({ authorId, todoName });
     return res.status(201).json({ message: "task added sucessfully" });
@@ -16,7 +18,8 @@ todolistRouter.post("/", async (req, res) => {
 });
 
 todolistRouter.get("/", async (req, res) => {
-  const { authorId } = req.body;
+  const authorId  = req.authorId;
+    console.log(authorId,"author")
   try {
     let todolistData = await TodolistModel.find({ authorId });
     return res.status(200).json({ message: todolistData });
