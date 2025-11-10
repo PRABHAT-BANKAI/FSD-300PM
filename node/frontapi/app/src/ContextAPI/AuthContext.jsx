@@ -11,11 +11,15 @@ const AuthProvider = ({ children }) => {
     setAuth(tokenCode);
   }
 
+  function logout() {
+    setAuth("");
+  }
+
   useEffect(() => {
     localStorage.setItem("todoToken", JSON.stringify(auth));
   });
   return (
-    <authContext.Provider value={{auth, login}}>
+    <authContext.Provider value={{ auth, login, logout }}>
       {children}
     </authContext.Provider>
   ); // provider

@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import AuthProvider, { useAuth } from "../ContextAPI/AuthContext";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -37,6 +39,7 @@ const Login = () => {
     login(response.data.token);
 
     setError("");
+    navigate("/todolist");
   };
 
   return (
